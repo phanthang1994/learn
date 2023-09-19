@@ -32,7 +32,8 @@ class _MyHomeState extends State<MyHome> {
           increaseNumber();
         }, child:  Text(
         'count = : $count'
-    ));
+      )
+    );
   }
 }
 
