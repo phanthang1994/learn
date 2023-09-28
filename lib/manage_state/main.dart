@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 //https://viblo.asia/p/hoc-flutter-tu-co-ban-den-nang-cao-phan-4-lot-tran-inheritedwidget-3P0lPDbmlox
-// cách 1 Passing state down counter: 1 and lifting data  _counter++;
+// Way 1 Passing state down counter: 1 and lifting data  _counter++;
 void main() {
   runApp(
-    MaterialApp(
+    const MaterialApp(
       home: MyHomePage(isLoading: false, counter: 1),
     ),
   );
@@ -13,7 +13,7 @@ class MyHomePage extends StatefulWidget {
   final bool isLoading;
   final int counter;
 
-  const MyHomePage({
+  const MyHomePage({super.key,
     required this.isLoading,
     required this.counter,
   });
@@ -38,7 +38,7 @@ class MyHomePageState extends State<MyHomePage> {
     print('rebuild MyHomePage');
     return Scaffold(
       body: Center(
-        child: CounterWidget(
+        child: DisplayCounterWidget(
           isLoading: _isLoading,
           counter:_counter,
         ),
@@ -57,17 +57,17 @@ class MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class CounterWidget extends StatelessWidget {
+class DisplayCounterWidget extends StatelessWidget {
   final bool isLoading;
   final int counter;
 
-  const CounterWidget({super.key,
+  const DisplayCounterWidget({super.key,
     required this.isLoading,
     required this.counter,
   });
 
   @override
   Widget build(BuildContext context) {
-    return isLoading ? CircularProgressIndicator() : Text('$counter');
+    return isLoading ? const CircularProgressIndicator() : Text('$counter');
   }
 }
